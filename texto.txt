@@ -1,3 +1,20 @@
 int 2
 aqui abra texto esto es una "cadena"
-int - 2
+int --2
+#comentario que se aparece
+"Esto es una cadena"
+
+sumar <- function(lista,total) {
+	suma=0
+	for (1 in 1:total) {
+		suma=suma+lista[i]
+	}
+	return(suma)
+}
+
+texto1 <-"El total es: "
+longitud=7
+datos=c(12,23,45,56,,78,89)
+sumatoria=sumar(datos,longitud)
+print(texto1)
+print(sumatoria)
