@@ -49,7 +49,7 @@ for m in patron.finditer(texto):
     lexema = m.group()
 
     if token_type == "WS":
-        continue  # ignorar blancos
+        continue
 
     if token_type == "CADENA":
         # m.group(0) = "contenido", m.group(1) = contenido sin comillas
