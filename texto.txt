@@ -1,8 +1,14 @@
 int 2
 aqui abra texto esto es una "cadena"
 int --2
-#comentario que se aparece
+# #comentario que se aparece
+############
+#
 "Esto es una cadena"
+""
+<--<<-
+9var09
+!
 
 sumar <- function(lista,total) {
 	suma=0
@@ -18,3 +24,8 @@ datos=c(12,23,45,56,,78,89)
 sumatoria=sumar(datos,longitud)
 print(texto1)
 print(sumatoria)
+
+set.data
+"Cadena incompleta
+
+aáa
