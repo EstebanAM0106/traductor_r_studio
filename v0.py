@@ -30,7 +30,6 @@ TOKENS = [
     ("WS", r'[ \t\n]+'), # Ignorar espacios en blanco
     ("ERR", r'.'),
 
-    #Poner tokens de errores (Considerar los numeros flotantes como errores)
 ]
 
 patron = re.compile("|".join(f"(?P<{nombre}>{regex})" for nombre, regex in TOKENS))
@@ -46,7 +45,9 @@ def offset_to_line_col(offset: int):
     col = offset - line_starts[idx] + 1
     return line, col
 
-# -------------- Escaneo ---------------------
+errores_encontrados = []
+
+
 for m in patron.finditer(texto):
     token_type = m.lastgroup
     lexema = m.group()
@@ -79,4 +80,15 @@ for m in patron.finditer(texto):
     #     print(f"Linea {line}, Columna {col} -> ' {lexema} ' {token_type}")
 
     line, col = offset_to_line_col(m.start())
-    print(f"Linea {line}, Columna {col} -> ' {lexema} ' {token_type}")
+
+    if token_type == "ERR":
+        # Acumula el error en la lista
+        errores_encontrados.append((line, col, lexema))
+    else:
+        # Imprime tokens normales
+        print(f"Linea {line}, Columna {col} -> '{lexema}' {token_type}")
+    
+if errores_encontrados:
+    print("\n--- ERRORES DETECTADOS ---")
+    for err_line, err_col, err_lexema in errores_encontrados:
+        print(f"Linea {err_line}, Columna {err_col} -> '{err_lexema}' ERR")
